@@ -102,6 +102,49 @@ Include /etc/phpmyadmin/apache.conf
 sudo systemctl restart apache2
 ```
 
+# Install Sendmail #
+`sudo apt install sendmail`
+
+# Install Mailhog #
+```
+wget https://github.com/mailhog/MailHog/releases/download/v1.0.0/MailHog_linux_amd64
+sudo cp MailHog_linux_amd64 /usr/local/bin/mailhog
+sudo chmod +x /usr/local/bin/mailhog
+```
+```
+sudo tee /etc/systemd/system/mailhog.service <<EOL
+[Unit]
+Description=Mailhog
+After=network.target
+[Service]
+User=vagrant
+ExecStart=/usr/bin/env /usr/local/bin/mailhog > /dev/null 2>&1 &
+[Install]
+WantedBy=multi-user.target
+EOL
+```
+```
+systemctl daemon-reload
+#### Password: vagrant [RETURN]
+systemctl enable mailhog
+#### Password: vagrant [RETURN]
+#### Mailhog is running on port 8025
+```
+
+# Install mhsendmail #
+```
+cd ~
+sudo apt-get install golang-go
+mkdir gocode
+echo "export GOPATH=$HOME/gocode" >> ~/.profile
+source ~/.profile
+go get github.com/mailhog/mhsendmail
+sudo cp gocode/bin/mhsendmail /usr/local/bin/mhsendmail
+sudo sed -i "s/;sendmail_path.*/sendmail_path='\/usr\/local\/bin\/mhsendmail'/" /etc/php/7.2/apache2/php.ini
+sudo sed -i "s/;sendmail_path.*/sendmail_path='\/usr\/local\/bin\/mhsendmail'/" /etc/php/7.3/apache2/php.ini
+sudo service apache2 restart
+```
+
 # History autocompletion #
 `vim ~/.inputrc`
 #### Paste in the following
