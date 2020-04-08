@@ -110,6 +110,9 @@ sudo systemctl restart apache2
 # Install Imagick #
 `sudo apt install php-imagick`
 
+# Install GraphicsMagick #
+`sudo apt install graphicsmagick`
+
 # Install ghostscript #
 `sudo apt install ghostscript`
 
