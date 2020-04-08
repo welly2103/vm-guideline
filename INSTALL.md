@@ -107,6 +107,11 @@ sudo vim /etc/apache2/apache2.conf
 Include /etc/phpmyadmin/apache.conf
 sudo systemctl restart apache2
 ```
+# Install Imagick #
+`sudo apt install php-imagick`
+
+# Install ghostscript #
+`sudo apt install ghostscript`
 
 # Install Sendmail #
 `sudo apt install sendmail`
@@ -148,11 +153,13 @@ go get github.com/mailhog/mhsendmail
 sudo cp gocode/bin/mhsendmail /usr/local/bin/mhsendmail
 sudo sed -i "s/;sendmail_path.*/sendmail_path='\/usr\/local\/bin\/mhsendmail'/" /etc/php/7.2/apache2/php.ini
 sudo sed -i "s/;sendmail_path.*/sendmail_path='\/usr\/local\/bin\/mhsendmail'/" /etc/php/7.3/apache2/php.ini
+sudo sed -i "s/;sendmail_path.*/sendmail_path='\/usr\/local\/bin\/mhsendmail'/" /etc/php/7.4/apache2/php.ini
 sudo service apache2 restart
 ```
 
 # History autocompletion #
 `vim ~/.inputrc`
+
 #### Paste in the following
 ```
 "\e[A": history-search-backward
