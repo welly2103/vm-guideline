@@ -160,6 +160,9 @@ sudo sed -i "s/;sendmail_path.*/sendmail_path='\/usr\/local\/bin\/mhsendmail'/" 
 sudo service apache2 restart
 ```
 
+# Add .gitignore and .gitconfig files for home dir #
+Copy the content or the files from this repository to your vagrant home dir (`/~`).
+
 # History autocompletion #
 `vim ~/.inputrc`
 
