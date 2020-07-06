@@ -1,0 +1,14 @@
+[user]
+    name = Firstname Lastname
+    email = firstname.lastname@tld.com
+[core]
+    excludesfile = /home/vagrant/.gitignore
+    ignorecase = false
+    fileMode = false
+    editor = vim
+    eol = lf
+[color]
+        ui = true
+[http]
+        sslCAinfo = /etc/ssl/certs/ca-certificates.crt
+        sslverify = false
