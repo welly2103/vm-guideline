@@ -163,6 +163,13 @@ sudo service apache2 restart
 # Add .gitignore and .gitconfig files to home dir #
 Copy the content or the files from this repository to your vagrant home dir (`/~`).
 
+# Add global git username and email #
+git config --global user.name "FIRST_NAME LAST_NAME"
+git config --global user.email "mail@example.com"
+
+# Enable bash-it git alias #
+bash-it enable alias git
+
 # History autocompletion #
 `vim ~/.inputrc`
 
