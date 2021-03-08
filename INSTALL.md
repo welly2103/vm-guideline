@@ -64,6 +64,7 @@ sudo mysql_secure_installation
 #### y [RETURN]
 sudo mysql
 mysql> ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password';
+mysql> exit
 rm mysql-apt-config_0.8.10-1_all.deb
 ```
 
