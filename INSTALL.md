@@ -188,4 +188,30 @@ set completion-ignore-case on
 
 Bind edited .inputrc `bind -f ~/.inputrc`
 
+# xdebug
+Install xdebug
+`sudo pecl install xdebug`
+
+Add php module
+`sudo vim /etc/php/7.4/mods-available/xdebug.ini`
+
+Paste in the following code
+```
+zend_extension=/usr/lib/php/20190902/xdebug.so
+xdebug.mode=debug
+xdebug.start_with_request=yes
+xdebug.idekey=netbeans-xdebug
+xdebug.client_host=192.168.33.10
+xdebug.client_port=9003
+xdebug.remote_handler=dbgp
+xdebug.discover_client_host=1
+```
+
+Create symlinks to activate the modules
+`sudo ln -s /etc/php/7.4/mods-available/xdebug.ini /etc/php/7.4/apache2/conf.d/20-xdebug.ini`
+`sudo ln -s /etc/php/7.4/mods-available/xdebug.ini /etc/php/7.4/cli/conf.d/20-xdebug.ini`
+
+Restart apache
+`sudo service apache2 restart`
+
 #### Connect via sftp IP and user vagrant password vagrant ####
