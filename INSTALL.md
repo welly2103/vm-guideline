@@ -178,11 +178,14 @@ git config --global user.email "mail@example.com"
 
 #### Paste in the following
 ```
+"\e[1~": beginning-of-line
+"\e[4~": end-of-line
 "\e[A": history-search-backward
 "\e[B": history-search-forward
 set show-all-if-ambiguous on
 set completion-ignore-case on
 ```
-Reconnect SSH
+
+Bind edited .inputrc `bind -f ~/.inputrc`
 
 #### Connect via sftp IP and user vagrant password vagrant ####
