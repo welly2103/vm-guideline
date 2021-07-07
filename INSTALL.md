@@ -190,7 +190,7 @@ Bind edited .inputrc `bind -f ~/.inputrc`
 
 # xdebug
 Install xdebug
-`sudo pecl install xdebug`
+`sudo apt-get install php-xdebug`
 
 Add php module
 `sudo vim /etc/php/7.4/mods-available/xdebug.ini`
