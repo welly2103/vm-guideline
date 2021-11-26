@@ -187,7 +187,9 @@ set completion-ignore-case on
 ```
 
 Bind edited .inputrc
-`bind -f ~/.inputrc`
+```
+bind -f ~/.inputrc
+```
 
 # Change apache default user and group
 ```
