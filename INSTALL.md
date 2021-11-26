@@ -194,9 +194,10 @@ Bind edited .inputrc
 sudo vi /etc/apache2/envvars
 ```
 Search for following lines and change both to `vagrant`
-
+```
 export APACHE_RUN_USER=vagrant
 export APACHE_RUN_GROUP=vagrant
+```
 
 # xdebug
 Install xdebug
