@@ -186,7 +186,17 @@ set show-all-if-ambiguous on
 set completion-ignore-case on
 ```
 
-Bind edited .inputrc `bind -f ~/.inputrc`
+Bind edited .inputrc
+`bind -f ~/.inputrc`
+
+# Change apache default user and group
+```
+sudo vi /etc/apache2/envvars
+```
+Search for following lines and change both to `vagrant`
+
+export APACHE_RUN_USER=vagrant
+export APACHE_RUN_GROUP=vagrant
 
 # xdebug
 Install xdebug
