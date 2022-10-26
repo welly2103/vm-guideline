@@ -12,11 +12,27 @@ sudo a2enmod actions
 sudo systemctl restart apache2
 ```
 
-# Install PHP 7.4 #
+# Add PHP Repository #
 ```
 sudo apt install software-properties-common
 sudo add-apt-repository ppa:ondrej/php
 sudo apt update
+```
+
+# Install PHP 8.1 #
+```
+sudo apt -y install php8.1
+sudo apt install php8.1-common php8.1-mysql php8.1-xml php8.1-xmlrpc php8.1-curl php8.1-gd php8.1-imagick php8.1-cli php8.1-dev php8.1-imap php8.1-mbstring php8.1-opcache php8.1-soap php8.1-zip php8.1-intl
+```
+
+# Install PHP 8.0 #
+```
+sudo apt -y install php8.0
+sudo apt install php8.0-common php8.0-mysql php8.0-xml php8.0-xmlrpc php8.0-curl php8.0-gd php8.0-imagick php8.0-cli php8.0-dev php8.0-imap php8.0-mbstring php8.0-opcache php8.0-soap php8.0-zip php8.0-intl
+```
+
+# Install PHP 7.4 #
+```
 sudo apt -y install php7.4
 sudo apt install php7.4-common php7.4-mysql php7.4-xml php7.4-xmlrpc php7.4-curl php7.4-gd php7.4-imagick php7.4-cli php7.4-dev php7.4-imap php7.4-mbstring php7.4-opcache php7.4-soap php7.4-zip php7.4-intl
 ```
@@ -68,10 +84,58 @@ mysql> exit
 rm mysql-apt-config_0.8.10-1_all.deb
 ```
 
+# Update mysql my.cnf to remove sql_mode ONLY_FULL_GROUP_BY #
+```
+sudo vim /etc/mysql/my.cnf
+```
+Add this to the file
+```
+[mysqld]
+sql_mode = "STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION"
+```
+
+
 # Create base vhost dir #
 ```
 sudo mkdir /var/www/vhosts
 sudo chown vagrant:www-data /var/www/vhosts -R
+```
+
+# Activate SSL and HTTPS (Port 443) #
+```
+sudo a2enmod ssl
+```
+Create self signed key (replace domain.tld with your local domain)
+```
+cd /root/
+mkdir ssl
+cd ssl
+openssl genrsa -out domain.tld.test.key 1024
+openssl req -new -key domain.tld.test.key -out domain.tld.test.csr
+openssl req -noout -text -in domain.tld.test.csr
+openssl x509 -req -days 365 -in domain.tld.test.csr -signkey domain.tld.test.key -out domain.tld.test.crt
+```
+
+Edit vhost conf and add new vhost for port 443
+```
+<VirtualHost *:443>
+        SSLEngine on
+        SSLCertificateFile /root/ssl/domain.tld.test.crt
+        SSLCertificateKeyFile /root/ssl/domain.tld.test.key
+        ServerName domain.tld.test
+        ServerAlias www.domain.tld.test
+        DocumentRoot /var/www/vhosts/domain.tld.test/public
+        ErrorLog ${APACHE_LOG_DIR}/domain.tld.test_error.log
+        CustomLog ${APACHE_LOG_DIR}/domain.tld.test_access.log combined
+        <Directory /var/www/vhosts/domain.tld.test>
+                Options FollowSymLinks
+                AllowOverride All
+        </Directory>
+</VirtualHost>
+```
+
+```
+sudo service apache2 restart
 ```
 
 # Install bash it #
