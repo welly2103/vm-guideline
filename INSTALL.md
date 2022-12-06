@@ -70,9 +70,9 @@ sudo dpkg -i mysql-apt-config_0.8.10-1_all.deb
 #### 4. OK
 sudo apt update
 sudo mysql
+sudo apt install mysql-server
 mysql> ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'root';
 mysql> exit
-sudo apt install mysql-server
 sudo mysql_secure_installation
 #### NO [RETURN]
 #### root [RETURN]
