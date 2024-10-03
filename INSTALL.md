@@ -95,17 +95,6 @@ y [RETURN]
 y [RETURN]
 ```
 
-# Update mysql my.cnf to remove sql_mode ONLY_FULL_GROUP_BY #
-```
-sudo vim /etc/mysql/my.cnf
-```
-Add this to the file
-```
-[mysqld]
-sql_mode = "STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION"
-```
-
-
 # Create base vhost dir #
 ```
 sudo mkdir /var/www/vhosts
