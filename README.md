@@ -13,5 +13,9 @@ https://www.vagrantup.com/
 - Put the file in a directory
 - Open up cygwin and fire `vagrant up`
 
+## Connect to the machine
+- Use putty or any ssh client and connect with the ip defined in the VagrantFile
+- Username and password is `vagrant`
+
 # Known issues
 - `vagrant up` throws provider error. Add `--provider` flag
