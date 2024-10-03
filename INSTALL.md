@@ -74,29 +74,25 @@ rm composer-setup.php
 
 # Install mysql server #
 ```
-wget http://repo.mysql.com/mysql-apt-config_0.8.10-1_all.deb
-sudo dpkg -i mysql-apt-config_0.8.10-1_all.deb
-#### 1. Select "MySQL Server & Cluster (Currently selected: mysql-8.0)"
-#### 2. mysql-5.7
-#### 3. MySQL Server & Cluster (Currently selected: mysql-5.7)
-#### 4. OK
 sudo apt update
-sudo mysql
 sudo apt install mysql-server
-mysql> ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'root';
-mysql> exit
-sudo mysql_secure_installation
-#### NO [RETURN]
-#### root [RETURN]
-#### root [RETURN]
-#### y [RETURN]
-#### y [RETURN]
-#### y [RETURN]
-#### y [RETURN]
+sudo systemctl start mysql.service
+
 sudo mysql
-mysql> ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password';
-mysql> exit
-rm mysql-apt-config_0.8.10-1_all.deb
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password';
+exit
+
+sudo mysql_secure_installation
+Enter password [RETURN]
+no [RETURN]
+y [RETURN]
+Enter password [RETURN]
+Enter password [RETURN]
+y [RETURN]
+y [RETURN]
+y [RETURN]
+y [RETURN]
+y [RETURN]
 ```
 
 # Update mysql my.cnf to remove sql_mode ONLY_FULL_GROUP_BY #
