@@ -17,5 +17,7 @@ https://www.vagrantup.com/
 - Use putty or any ssh client and connect with the ip defined in the VagrantFile
 - Username and password is `vagrant`
 
+### Install whatever you need from `INSTALL.md`
+
 # Known issues
 - `vagrant up` throws provider error. Add `--provider` flag
