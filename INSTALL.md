@@ -217,11 +217,10 @@ sudo apt-get install golang-go
 mkdir gocode
 echo "export GOPATH=$HOME/gocode" >> ~/.profile
 source ~/.profile
-go install github.com/mailhog/mhsendmail@latest
+go install github.com/mailhog/mhsendmail
 sudo cp gocode/bin/mhsendmail /usr/local/bin/mhsendmail
-sudo sed -i "s/;sendmail_path.*/sendmail_path='\/usr\/local\/bin\/mhsendmail'/" /etc/php/7.2/apache2/php.ini
-sudo sed -i "s/;sendmail_path.*/sendmail_path='\/usr\/local\/bin\/mhsendmail'/" /etc/php/7.3/apache2/php.ini
 sudo sed -i "s/;sendmail_path.*/sendmail_path='\/usr\/local\/bin\/mhsendmail'/" /etc/php/7.4/apache2/php.ini
+sudo sed -i "s/;sendmail_path.*/sendmail_path='\/usr\/local\/bin\/mhsendmail'/" /etc/php/8.3/apache2/php.ini
 sudo service apache2 restart
 ```
 
