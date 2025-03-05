@@ -155,7 +155,7 @@ sudo apt-get install git bash-completion
 # Install php cs fixer #
 ```
 cd ~
-wget https://cs.symfony.com/download/php-cs-fixer-v2.phar -O php-cs-fixer
+wget https://cs.symfony.com/download/php-cs-fixer-v3.phar -O php-cs-fixer
 sudo chmod a+x php-cs-fixer
 sudo mv php-cs-fixer /usr/local/bin/php-cs-fixer
 ```
