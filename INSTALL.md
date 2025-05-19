@@ -162,7 +162,7 @@ sudo mv php-cs-fixer /usr/local/bin/php-cs-fixer
 
 # Install PhpMyAdmin #
 ```
-sudo apt install phpmyadmin php-mbstring php-gettext
+sudo apt install phpmyadmin php-mbstring
 #### [*] Apache [RETURN]
 #### Yes  [RETURN]
 #### Enter some password [RETURN]
